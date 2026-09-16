@@ -6,5 +6,10 @@ export function weekdayForDate(date: string) { return new Date(`${date}T12:00:00
 /** A dated guide replaces the recurring guide for its complete calendar day. */
 export function entriesForDate(entries: ScheduleEntry[], date: string) { const dated = entries.filter((entry) => entry.schedule_date === date); return (dated.length ? dated : entries.filter((entry) => entry.schedule_date === null && entry.day_of_week === weekdayForDate(date))).sort((a, b) => a.starts_at.localeCompare(b.starts_at)) }
 export function findCurrentAndNext(items: Programme[], time: string) { return { now: items.find((item) => item.starts_at <= time && time < item.ends_at) ?? null, next: items.find((item) => item.starts_at > time) ?? null } }
-export const formatTime = (time: string) => time.slice(0, 5)
-export function typeLabel(type: Programme['content_type']) { return ({ premiere: 'Estreno', repeat: 'Repetición', retro: 'Retro', full_anime: 'Anime completo', movie: 'Película', other: 'Otro' })[type] }
+export function formatTime(time: string) {
+  const [hourText, minute] = time.split(':')
+  const hour = Number(hourText)
+  const suffix = hour >= 12 ? 'PM' : 'AM'
+  return `${hour % 12 || 12}:${minute} ${suffix}`
+}
+export function typeLabel(type: Programme['content_type']) { return ({ anime: 'Anime', premiere: 'Estreno', repeat: 'Repetición', retro: 'Retro', full_anime: 'Anime completo', movie: 'Película', special: 'Especial', other: 'Otro' })[type] }

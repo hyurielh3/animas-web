@@ -1,11 +1,45 @@
 @import "tailwindcss";
 
-:root {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #171717;
-  background: #f7f5f0;
-}
-
+:root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; color: #1d1d1b; background: #f6f4ef; }
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; }
-button, input, select, textarea { font: inherit; }
+button { font: inherit; }
+.site { min-height: 100vh; background: #f6f4ef; }
+.topbar { background: #20201e; border-bottom: 3px solid #f28b22; }
+.topbar-inner { height: 68px; max-width: 1120px; padding: 0 24px; margin: auto; display: flex; align-items: center; justify-content: space-between; }
+.brand { width: 168px; height: 44px; background: url('/animas-logo.png') center / 212px auto no-repeat; }
+.station { color: #dad7d0; font-size: 11px; letter-spacing: .16em; font-weight: 700; }
+.content { max-width: 1120px; margin: auto; padding: 58px 24px 72px; }
+.eyebrow { margin: 0 0 10px; color: #b9600c; font-size: 11px; font-weight: 800; letter-spacing: .14em; }
+.hero { display: grid; grid-template-columns: 1.2fr .8fr; border: 1px solid #dedbd3; background: #fff; }
+.hero-copy { padding: 38px 42px; }
+.hero-title { margin: 0; font-size: clamp(30px, 4vw, 52px); letter-spacing: -.045em; line-height: 1; }
+.hero-time { margin: 24px 0 0; font-weight: 700; }
+.hero-text { margin: 14px 0 0; color: #65635f; line-height: 1.6; max-width: 54ch; }
+.hero-side { background: #e8e4da; padding: 32px; display: flex; flex-direction: column; justify-content: end; border-left: 1px solid #dedbd3; }
+.hero-side small { color: #696661; letter-spacing: .1em; font-weight: 700; }
+.hero-side strong { margin-top: 8px; font-size: 20px; }
+.next { margin-top: 14px; padding: 17px 20px; background: #20201e; color: #fff; display: flex; align-items: center; gap: 16px; }
+.next-label { color: #f8a249; font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+.next time { margin-left: auto; color: #d5d1c8; }
+.empty { border-left: 4px solid #f28b22; }
+.guide { margin-top: 64px; }
+.guide-head { display: flex; align-items: end; justify-content: space-between; border-bottom: 1px solid #d9d6ce; padding-bottom: 18px; }
+.guide-title { margin: 0; font-size: 32px; letter-spacing: -.035em; }
+.hint { margin: 0; color: #6d6b66; font-size: 14px; }
+.days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin-top: 22px; }
+.day { min-height: 42px; border: 1px solid #d7d4cb; background: #fff; color: #353431; cursor: pointer; font-size: 14px; font-weight: 650; }
+.day:hover { border-color: #8d8981; background: #f1eee7; }
+.day[aria-pressed="true"] { background: #f28b22; border-color: #f28b22; color: #171717; }
+.schedule { margin-top: 20px; max-width: 740px; background: #fff; border-top: 1px solid #d9d6ce; }
+.programme { border-bottom: 1px solid #e3e0d8; padding: 18px 4px; }
+.programme button { width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 14px; border: 0; background: transparent; text-align: left; cursor: pointer; color: inherit; }
+.programme-active { border-left: 3px solid #f28b22; padding-left: 13px; background: #fffbf4; }
+.programme small { display: block; margin-top: 4px; color: #77736c; font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+.programme time { align-self: center; font-size: 13px; font-weight: 700; color: #5d5a54; white-space: nowrap; }
+.programme .end { color: #6d6b66; font-size: 12px; font-weight: 500; }
+.synopsis { margin: 12px 0 0; color: #67645f; font-size: 14px; line-height: 1.55; }
+.no-guide { margin: 20px 0 0; padding: 22px 0; border-top: 1px solid #d9d6ce; color: #77736c; }
+.footer { background: #20201e; color: #c8c4bb; }
+.footer-inner { max-width: 1120px; margin: auto; padding: 24px; display: flex; justify-content: space-between; font-size: 13px; }
+@media (max-width: 680px) { .topbar-inner { height: 60px; padding: 0 18px; } .brand { width: 145px; height: 40px; background-size: 184px auto; } .station { display: none; } .content { padding: 38px 18px 52px; } .hero { grid-template-columns: 1fr; } .hero-copy { padding: 28px 24px; } .hero-side { border-left: 0; border-top: 1px solid #dedbd3; padding: 22px 24px; } .guide { margin-top: 46px; } .guide-head { display: block; } .hint { margin-top: 8px; } .days { grid-template-columns: 1fr; } .programme button { grid-template-columns: 1fr; gap: 6px; } .programme time { font-size: 12px; } }

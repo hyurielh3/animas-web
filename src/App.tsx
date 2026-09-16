@@ -5,7 +5,9 @@ import type { Programme, ScheduleEntry } from './types/database'
 
 function ProgrammeCard({ item, active }: { item: Programme; active: boolean }) {
   const [isOpen, setOpen] = useState(false)
-  return <article className={`programme ${active ? 'programme-active' : ''}`}><button type="button" onClick={() => setOpen(!isOpen)} aria-expanded={isOpen}><time>{formatTime(item.starts_at)}</time><span><b>{item.anime.title}</b><small>{typeLabel(item.content_type)} · hasta {formatTime(item.ends_at)}</small></span></button>{isOpen && item.anime.synopsis && <p className="synopsis">{item.anime.synopsis}</p>}</article>
+  const markers = { premiere: '★', repeat: '↻', retro: '◒', full_anime: '◆', movie: '●', special: '✦', other: '•' }
+  const marker = item.content_type === 'anime' ? null : markers[item.content_type]
+  return <article className={`programme ${active ? 'programme-active' : ''}`}><button type="button" onClick={() => setOpen(!isOpen)} aria-expanded={isOpen}><time>{formatTime(item.starts_at)}</time><span className="programme-name"><b>{item.anime.title}</b>{marker && <i className="programme-kind" tabIndex={0} aria-label={typeLabel(item.content_type)} data-tooltip={typeLabel(item.content_type)}>{marker}</i>}</span></button>{isOpen && item.anime.synopsis && <p className="synopsis">{item.anime.synopsis}</p>}</article>
 }
 
 function toProgrammes(entries: ScheduleEntry[], animes: Map<string, Programme['anime']>) {

@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useSchedule } from './hooks/useSchedule'
-import { days, entriesForDate, findCurrentAndNext, formatTime, typeLabel, weekdayForDate } from './lib/schedule'
+import { days as weekDays, entriesForDate, findCurrentAndNext, formatTime, typeLabel, weekdayForDate } from './lib/schedule'
 import type { Programme, ScheduleEntry } from './types/database'
 
 function programmeTitle(anime: Programme['anime']) { const franchise = anime.franchise?.[0]?.name; return franchise ? `${franchise} ${anime.title}` : anime.title }
@@ -18,11 +18,14 @@ function toProgrammes(entries: ScheduleEntry[], animes: Map<string, Programme['a
 
 function App() {
   const { settings, loading, error, channelDate, channelTime, programmes, entries, animes } = useSchedule()
-  const today = weekdayForDate(channelDate)
+  const currentDay = weekdayForDate(channelDate)
+  const today = 0
+  const days = [...weekDays.slice(currentDay), ...weekDays.slice(0, currentDay)]
   const weekly = useMemo(() => {
     const animeIndex = new Map(animes.map((anime) => [anime.id, anime]))
-    return days.map((_, dayIndex) => toProgrammes(dayIndex === today ? entriesForDate(entries, channelDate) : entries.filter((entry) => entry.schedule_date === null && entry.day_of_week === dayIndex), animeIndex))
-  }, [animes, channelDate, entries, today])
+    const byWeekday = weekDays.map((_, dayIndex) => toProgrammes(dayIndex === currentDay ? entriesForDate(entries, channelDate) : entries.filter((entry) => entry.schedule_date === null && entry.day_of_week === dayIndex), animeIndex))
+    return [...byWeekday.slice(currentDay), ...byWeekday.slice(0, currentDay)]
+  }, [animes, channelDate, currentDay, entries])
   const { now, next } = findCurrentAndNext(programmes, channelTime)
   const heading = now ? programmeTitle(now.anime) : 'Sin emisión programada'
   const detail = now ? now.anime.synopsis : 'La guía mostrará la programación cuando el canal agregue sus próximos bloques.'

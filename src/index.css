@@ -31,7 +31,7 @@ button { font: inherit; }
 .day { min-height: 42px; border: 1px solid #d7d4cb; background: #fff; color: #353431; cursor: pointer; font-size: 14px; font-weight: 650; }
 .day:hover { border-color: #8d8981; background: #f1eee7; }
 .day[aria-pressed="true"] { background: #f28b22; border-color: #f28b22; color: #171717; }
-.schedule { margin-top: 20px; max-width: 740px; background: #fff; border-top: 1px solid #d9d6ce; }
+.schedule { margin-top: 20px; background: #fff; border-top: 1px solid #d9d6ce; }
 .programme { border-bottom: 1px solid #e3e0d8; padding: 18px 4px; }
 .programme button { width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 14px; border: 0; background: transparent; text-align: left; cursor: pointer; color: inherit; }
 .programme-active { border-left: 3px solid #f28b22; padding-left: 13px; background: #fffbf4; }

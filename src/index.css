@@ -27,19 +27,23 @@ button { font: inherit; }
 .guide-head { display: flex; align-items: end; justify-content: space-between; border-bottom: 1px solid #d9d6ce; padding-bottom: 18px; }
 .guide-title { margin: 0; font-size: 32px; letter-spacing: -.035em; }
 .hint { margin: 0; color: #6d6b66; font-size: 14px; }
-.days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin-top: 22px; }
-.day { min-height: 42px; border: 1px solid #d7d4cb; background: #fff; color: #353431; cursor: pointer; font-size: 14px; font-weight: 650; }
-.day:hover { border-color: #8d8981; background: #f1eee7; }
-.day[aria-pressed="true"] { background: #f28b22; border-color: #f28b22; color: #171717; }
-.schedule { margin-top: 20px; background: #fff; border-top: 1px solid #d9d6ce; }
-.programme { border-bottom: 1px solid #e3e0d8; padding: 18px 4px; }
-.programme button { width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 14px; border: 0; background: transparent; text-align: left; cursor: pointer; color: inherit; }
-.programme-active { border-left: 3px solid #f28b22; padding-left: 13px; background: #fffbf4; }
-.programme small { display: block; margin-top: 4px; color: #77736c; font-size: 11px; font-weight: 700; letter-spacing: .08em; }
-.programme time { align-self: center; font-size: 13px; font-weight: 700; color: #5d5a54; white-space: nowrap; }
-.programme .end { color: #6d6b66; font-size: 12px; font-weight: 500; }
-.synopsis { margin: 12px 0 0; color: #67645f; font-size: 14px; line-height: 1.55; }
+.week-wrap { margin-top: 22px; overflow-x: auto; padding-bottom: 4px; }
+.week-grid { min-width: 980px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border: 1px solid #d9d6ce; background: #fff; }
+.day-column { min-height: 250px; border-right: 1px solid #dedbd3; }
+.day-column:last-child { border-right: 0; }
+.day-column h3 { margin: 0; min-height: 46px; display: grid; place-items: center; border-bottom: 1px solid #dedbd3; font-size: 13px; }
+.day-column.today h3 { background: #f28b22; color: #1d1d1b; }
+.day-programmes { padding: 8px; }
+.programme { border-bottom: 1px solid #e3e0d8; padding: 12px 0; }
+.programme:last-child { border-bottom: 0; }
+.programme button { width: 100%; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 8px; border: 0; background: transparent; text-align: left; cursor: pointer; color: inherit; }
+.programme-active { margin: 0 -8px; padding: 12px 8px; border-left: 3px solid #f28b22; background: #fffbf4; }
+.programme b { display: block; overflow-wrap: anywhere; font-size: 13px; line-height: 1.25; }
+.programme small { display: block; margin-top: 5px; color: #77736c; font-size: 10px; font-weight: 700; line-height: 1.35; letter-spacing: .03em; }
+.programme time { font-size: 11px; font-weight: 800; color: #b9600c; white-space: nowrap; }
+.synopsis { margin: 10px 0 0; color: #67645f; font-size: 13px; line-height: 1.5; }
+.empty-day { margin: 12px 0; color: #97938a; font-size: 12px; line-height: 1.4; }
 .no-guide { margin: 20px 0 0; padding: 22px 0; border-top: 1px solid #d9d6ce; color: #77736c; }
 .footer { background: #20201e; color: #c8c4bb; }
 .footer-inner { max-width: 1120px; margin: auto; padding: 24px; display: flex; justify-content: space-between; font-size: 13px; }
-@media (max-width: 680px) { .topbar-inner { height: 60px; padding: 0 18px; } .brand { width: 145px; height: 40px; background-size: 184px auto; } .station { display: none; } .content { padding: 38px 18px 52px; } .hero { grid-template-columns: 1fr; } .hero-copy { padding: 28px 24px; } .hero-side { border-left: 0; border-top: 1px solid #dedbd3; padding: 22px 24px; } .guide { margin-top: 46px; } .guide-head { display: block; } .hint { margin-top: 8px; } .days { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; } .day { flex: 0 0 82px; } .programme button { grid-template-columns: 1fr; gap: 6px; } .programme time { font-size: 12px; } }
+@media (max-width: 680px) { .topbar-inner { height: 60px; padding: 0 18px; } .brand { width: 145px; height: 40px; background-size: 184px auto; } .station { display: none; } .content { padding: 38px 18px 52px; } .hero { grid-template-columns: 1fr; } .hero-copy { padding: 28px 24px; } .hero-side { border-left: 0; border-top: 1px solid #dedbd3; padding: 22px 24px; } .guide { margin-top: 46px; } .guide-head { display: block; } .hint { margin-top: 8px; } .week-grid { min-width: 910px; } .day-column h3 { min-height: 42px; } }

@@ -9,6 +9,7 @@
 }
 
 .weekday-picker {
+  display: block;
   grid-column: 1 / -1;
   align-self: start;
   min-width: 0;
@@ -16,13 +17,13 @@
 }
 
 .weekday-picker legend {
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .weekday-options {
   display: grid;
-  grid-template-columns: repeat(7, minmax(52px, max-content));
-  gap: 8px;
+  grid-template-columns: repeat(7, 48px);
+  gap: 6px;
 }
 
 .weekday-options button,
@@ -51,13 +52,19 @@
   box-shadow: inset 0 0 0 1px var(--accent);
 }
 
+.weekday-options button {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+}
+
 .weekday-options button:active,
 .weekday-shortcuts button:active { transform: translateY(1px); }
 
 .weekday-shortcuts {
   display: flex;
   gap: 6px;
-  margin: 0 0 9px;
+  margin-top: 10px;
 }
 
 .weekday-shortcuts button {
@@ -72,5 +79,5 @@
 
 @media (max-width: 800px) {
   .schedule-form { grid-template-columns: 1fr; }
-  .weekday-options { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .weekday-options { grid-template-columns: repeat(4, 48px); }
 }

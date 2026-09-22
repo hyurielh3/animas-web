@@ -20,45 +20,36 @@
 }
 
 .weekday-options {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(64px, max-content));
   gap: 8px;
-  flex-wrap: wrap;
 }
 
 .weekday-options label {
-  position: relative;
-  display: block;
-  flex: 0 0 58px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin: 0;
   cursor: pointer;
+  color: #514d47;
+  font-size: 13px;
+  font-weight: 750;
 }
 
 .weekday-options input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
+  width: 17px;
+  min-height: 17px;
+  margin: 0;
+  accent-color: var(--accent);
 }
 
 .weekday-options span {
-  display: grid;
-  min-height: 38px;
-  place-items: center;
-  border: 1px solid #aaa49a;
-  background: #fff;
-  color: #514d47;
-  font-size: 12px;
-  font-weight: 800;
+  line-height: 17px;
 }
 
 .weekday-options input:checked + span {
-  border-color: #c55a09;
-  background: #fdf0e2;
   color: #8f3e05;
-}
-
-.weekday-options input:focus-visible + span {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
+  font-weight: 850;
 }
 
 @media (max-width: 1120px) {
@@ -67,6 +58,5 @@
 
 @media (max-width: 800px) {
   .schedule-form { grid-template-columns: 1fr; }
-  .weekday-options { gap: 6px; }
-  .weekday-options label { flex-basis: calc(25% - 5px); }
+  .weekday-options { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 }

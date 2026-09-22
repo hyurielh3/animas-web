@@ -21,35 +21,49 @@
 
 .weekday-options {
   display: grid;
-  grid-template-columns: repeat(7, minmax(64px, max-content));
+  grid-template-columns: repeat(7, minmax(52px, max-content));
   gap: 8px;
 }
 
-.weekday-options label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0;
+.weekday-options button,
+.weekday-shortcuts button {
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
   cursor: pointer;
   color: var(--text-muted);
   font-size: 13px;
   font-weight: 750;
+  padding: 7px 10px;
 }
 
-.weekday-options input {
-  width: 17px;
-  min-height: 17px;
-  margin: 0;
-  accent-color: var(--accent);
+.weekday-options button:hover,
+.weekday-shortcuts button:hover {
+  border-color: #827d75;
+  background: #f7f5f1;
 }
 
-.weekday-options span {
-  line-height: 17px;
-}
-
-.weekday-options input:checked + span {
+.weekday-options button.selected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
   color: var(--accent-hover);
-  font-weight: 850;
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.weekday-options button:active,
+.weekday-shortcuts button:active { transform: translateY(1px); }
+
+.weekday-shortcuts {
+  display: flex;
+  gap: 6px;
+  margin: 0 0 9px;
+}
+
+.weekday-shortcuts button {
+  min-height: 30px;
+  padding: 4px 8px;
+  font-size: 12px;
 }
 
 @media (max-width: 1120px) {

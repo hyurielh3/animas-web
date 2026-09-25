@@ -6,6 +6,7 @@
 
 /* Calm, neutral surfaces; orange remains reserved for emphasis. */
 .site { background: #f7f5f1; }
+.intro-compact { margin-bottom: 20px; }
 .topbar { border-color: #38342f; background: #121212; }
 .nav-link { color: #d8d3ca; }
 .nav-link:hover, .nav-link.active { color: #fff; background: #292929; }
